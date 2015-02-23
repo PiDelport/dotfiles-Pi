@@ -1,0 +1,40 @@
+# Common, non-user-specific Mercurial configuration.
+#
+# This should be included from ~/.hgrc using a line like:
+#
+# %include ~/.hgrc.common
+
+[ui]
+ignore = ~/.hgignore
+
+# Don't launch interactive merge tools by default.
+merge = internal:merge
+
+[extensions]
+
+# Major features
+convert =
+histedit =
+mq =
+rebase =
+
+# Minor conveniences
+churn =
+color =
+progress =
+purge =
+
+[mq]
+# Make MQ patches secret (instead of draft), by default.
+secret = True
+
+[tortoisehg]
+# Show task tabs alongside the repo widget, too.
+tasktabs = west
+
+# See https://bitbucket.org/tortoisehg/thg/wiki/OpenAtLine
+editor = gvim -f [+"/$SEARCH/"] [+"$LINENUM" "$FILE"]
+
+
+# Vim does not recognize this filename, default.
+# vim: set ft=cfg:

@@ -1,0 +1,39 @@
+# vim: set foldmethod=marker:
+syntax: glob
+
+# {{{1 Vim
+
+# Swap files
+.*.swp
+.*.swo
+.*.swn
+
+# ctags
+tags
+
+# Rope (python-mode)
+.ropeproject/
+
+# {{{1 Python tools
+
+# Nose
+.noseids
+
+# {{{1 Python IDEs
+
+# Ninja IDE
+*.nja
+
+# {{{1 Java IDEs
+
+# IntellJ IDEA
+syntax: regexp
+^\.idea/
+^\out/
+# For now...
+syntax: glob
+*.iml
+
+# Eclipse / Java
+syntax: regexp
+^(tests/)?\.((classpath|project)$|settings)
