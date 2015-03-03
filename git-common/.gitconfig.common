@@ -1,0 +1,21 @@
+# Common, non-user-specific Git configuration.
+#
+# This should be included from ~/.gitconfig using an entry like:
+#
+# [include]
+# path = ~/.gitconfig.common
+
+[push]
+# Squelch the default warning message about this.
+default = simple
+
+[color]
+ui = true
+
+# Convenience aliases.
+[alias]
+st = status
+bs = branch -vv
+incoming = fetch --dry-run
+outgoing = push --all --dry-run
+safepull = pull --ff-only
