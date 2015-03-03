@@ -4,7 +4,7 @@
 #
 # (For more details, see the ssh_config manual page's ControlMaster section.)
 
-# Check or start a master process.
+# Check or start a master process in the background.
 sshmaster () {
     : ${@:?"Usage: sshmaster [user@]hostname"}
     if ! ssh -O check "$@"; then
@@ -14,7 +14,7 @@ sshmaster () {
     fi
 }
 
-# Stop an existing master process.
+# Stop an existing background master process.
 sshmaster_exit () {
     : ${@:?"Usage: sshmaster_exit [user@]hostname"}
     ssh -O exit "$@"
