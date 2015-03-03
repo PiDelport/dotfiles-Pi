@@ -20,8 +20,23 @@ sshmaster_exit () {
     ssh -O exit "$@"
 }
 
+# Start a looped foreground master processes. This is intended to maintain a
+# persistent session to servers with relatively short connection timeouts.
+sshmaster_loop () {
+    while true; do
+        # Make the loop's activity visible.
+        echo "$(date) ssh -MN $@"
+        ssh -MN "$@"
+        # SSH exits with code 255 for connection errors: loop for that, exit
+        # for anything else.
+        if test "$?" -ne 255; then break; fi
+    done
+}
+
 # Shortcuts for Bitbucket and GitHub.
 sshbb () { sshmaster hg@bitbucket.org; }
 sshgh () { sshmaster git@github.com; }
+sshbb_loop () { sshmaster_loop hg@bitbucket.org; }
+sshgh_loop () { sshmaster_loop git@github.com; }
 sshbb_exit () { sshmaster_exit hg@bitbucket.org; }
 sshgh_exit () { sshmaster_exit git@github.com; }
