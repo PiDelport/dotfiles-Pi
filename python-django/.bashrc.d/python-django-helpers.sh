@@ -16,8 +16,10 @@ ___django_add_superuser () {
 }
 
 # Install various sets of system package dependencies.
-___install_pillow_deps () {
+___install_python_deps () {
     sudo aptitude install python-dev python3-dev
+}
+___install_pillow_deps () {
     sudo aptitude install zlib1g-dev libjpeg-dev libwebp-dev liblcms2-dev libfreetype6-dev
 }
 ___install_geodjango_deps () {
