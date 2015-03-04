@@ -19,6 +19,9 @@ ___django_add_superuser () {
 ___install_python_deps () {
     sudo aptitude install python-dev python3-dev
 }
+___install_lxml_deps () {
+    sudo aptitude install libxml2-dev libxslt-dev
+}
 ___install_pillow_deps () {
     sudo aptitude install zlib1g-dev libjpeg-dev libwebp-dev liblcms2-dev libfreetype6-dev
 }
