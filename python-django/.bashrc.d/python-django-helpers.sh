@@ -1,5 +1,10 @@
 # Miscellaneous Django-related helpers.
 
+# Shortcut for mkvirtualenv with python3 as the interpreter.
+mkvirtualenv3 () {
+    mkvirtualenv --python="$(which python3)" "$@"
+}
+
 # Configure a virtualenv to have DJANGO_SETTINGS_MODULE set.
 ___django_set_settings_module () {
     : ${VIRTUAL_ENV:?'$VIRTUAL_ENV not set!'}
