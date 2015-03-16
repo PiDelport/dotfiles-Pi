@@ -28,6 +28,27 @@ merge = internal:merge
 # predefined entity labels don't seem to be very useful for logs.)
 logtemplate = {ifeq(p2rev, '-1', '{rev} {label("green", branch)}', label('black bold', '{rev} {branch} (merge)'))} {label('blue', '{author|user}')} {label('magenta', '({diffstat})')} {if(tags, label('yellow bold', '[{tags}]'))}{if(bookmarks, label('green bold', '[{bookmarks}]'))} {desc|firstline|strip}\n
 
+[revsetalias]
+# Define some revision set utility functions for interactive use.
+
+# Branch negation: Everything not in $branch.
+_not($branch) = reverse(all() - ::branch($branch))
+
+# Branch difference: All changes not merged to $base from $feature yet.
+_pending($base, $feature) = reverse(::branch($feature) - ::branch($base))
+
+# Topological meet: The closest common ancestor of the working copy and
+# $othertip.
+#
+# This is useful for: hg up '_meet(other)'
+_meet($othertip) = ancestor(., $othertip)
+
+# Merge history: Show the changesets merged in by the given changeset.
+_merged($rev) = reverse(::($rev) - ::p1($rev))
+
+# Merge in progress: Show the changesets currently being merged.
+_merging = reverse(::p2() - ::p1())
+
 [extensions]
 
 # Major features
