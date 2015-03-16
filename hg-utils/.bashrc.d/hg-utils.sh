@@ -15,3 +15,8 @@ mr_hg_in () {
     # will make "mr -q" suppress those error messages too.)
     mr "${@:-"-qj"}" run sh -c '! hg in --color=always'
 }
+
+# As above, but for "hg out".
+mr_hg_out () {
+    mr "${@:-"-qj"}" run sh -c '! hg out --color=always'
+}
