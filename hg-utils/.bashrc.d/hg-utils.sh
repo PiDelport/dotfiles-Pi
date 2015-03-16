@@ -13,5 +13,5 @@ mr_hg_in () {
     #
     # ("hg in" will also simply fail for non-hg repositories, but the negation
     # will make "mr -q" suppress those error messages too.)
-    mr "${@:-"-qj"}" run sh -c '! hg in'
+    mr "${@:-"-qj"}" run sh -c '! hg in --color=always'
 }
