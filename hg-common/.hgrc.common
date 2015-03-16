@@ -10,6 +10,24 @@ ignore = ~/.hgignore
 # Don't launch interactive merge tools by default.
 merge = internal:merge
 
+# This defines a compact, rich, colorized, one-line log message format.
+#
+# This shows the following components:
+#
+# 1. Local revision number
+# 2. Branch name
+# 3. Merge indicator
+# 4. Author
+# 5. Diffstat
+# 6. Commit summary
+#
+# This intentionally omits key fields like the hash and date for greater
+# brevity. To see those, use "-T default" or "-T compact".
+#
+# (Note: This hardcodes the color labels, because the color extension's
+# predefined entity labels don't seem to be very useful for logs.)
+logtemplate = {ifeq(p2rev, '-1', '{rev} {label("green", branch)}', label('black bold', '{rev} {branch} (merge)'))} {label('blue', '{author|user}')} {label('magenta', '({diffstat})')} {if(tags, label('yellow bold', '[{tags}]'))}{if(bookmarks, label('green bold', '[{bookmarks}]'))} {desc|firstline|strip}\n
+
 [extensions]
 
 # Major features
