@@ -58,3 +58,13 @@ See:
 
 * https://pypi.python.org/pypi/Bookkeeper
 * https://github.com/hkupty/bookkeeper
+
+
+Post-installation steps
+=======================
+
+bash-rc-dir
+    See ``.bashrc.d/README.rst`` for a snippet to add to your ``.bashrc``.
+
+ssh-config-dir
+    See ``.ssh/README.rst``, and run ``~/.ssh/config-update.sh``.
