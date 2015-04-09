@@ -68,3 +68,6 @@ bash-rc-dir
 
 ssh-config-dir
     See ``.ssh/README.rst``, and run ``~/.ssh/config-update.sh``.
+
+hg-common
+    See ``~/.hgrc.common``, and include it from ``~/.hgrc``.
