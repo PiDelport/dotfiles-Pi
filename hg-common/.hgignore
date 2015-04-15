@@ -19,20 +19,14 @@ tags
 # Nose
 .noseids
 
-# {{{1 Python IDEs
+# {{{1 IDEs
+
+# IntellJ IDEA (PyCharm, Android Studio, etc.)
+*.iml
+.idea/
 
 # Ninja IDE
 *.nja
-
-# {{{1 Java IDEs
-
-# IntellJ IDEA
-syntax: regexp
-^\.idea/
-^\out/
-# For now...
-syntax: glob
-*.iml
 
 # Eclipse / Java
 syntax: regexp
