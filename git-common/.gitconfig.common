@@ -16,8 +16,8 @@ ui = true
 [alias]
 st = status
 bs = branch -vv
-incoming = fetch --dry-run
-outgoing = push --all --dry-run
+in = fetch --dry-run
+out = push --all --dry-run
 safepull = pull --ff-only
 
 # vim: set ft=gitconfig:
