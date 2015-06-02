@@ -69,6 +69,11 @@ schemes =
 secret = True
 
 [tortoisehg]
+# Minor things
+authorcolor = True
+postpull = update
+shell = gnome-terminal
+
 # Show task tabs alongside the repo widget, too.
 tasktabs = west
 
