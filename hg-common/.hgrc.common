@@ -62,6 +62,7 @@ churn =
 color =
 progress =
 purge =
+schemes =
 
 [mq]
 # Make MQ patches secret (instead of draft), by default.
