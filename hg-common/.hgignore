@@ -27,7 +27,3 @@ tags
 
 # Ninja IDE
 *.nja
-
-# Eclipse / Java
-syntax: regexp
-^(tests/)?\.((classpath|project)$|settings)
