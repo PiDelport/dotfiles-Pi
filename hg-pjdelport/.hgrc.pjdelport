@@ -1,0 +1,12 @@
+# Common, non-user-specific Mercurial configuration.
+#
+# This should be included from ~/.hgrc using a line like:
+#
+# %include ~/.hgrc.pjdelport
+
+[ui]
+username = Piet Delport <pjdelport@gmail.com>
+
+
+# Vim does not recognize this filename, default.
+# vim: set ft=cfg:
