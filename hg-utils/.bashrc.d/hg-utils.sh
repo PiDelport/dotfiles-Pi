@@ -20,3 +20,49 @@ mr_hg_in () {
 mr_hg_out () {
     mr "${@:-"-qj"}" run sh -c '! hg out --color=always'
 }
+
+
+# See https://bitbucket.org/snippets/pjdelport/5oxe/mercurial-common-hgignore-patterns
+
+hgignore_python () {
+cat <<EOF
+syntax: glob
+
+# Python bytecode
+*.pyc
+*.pyo
+__pycache__
+
+# distutils / setuptools
+*.egg
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Tox
+.tox
+EOF
+}
+
+hgignore_android () {
+cat <<EOF
+syntax: glob
+
+# Local-only
+local.properties
+
+# Build output
+.gradle/
+build/
+
+# Android Studio
+*.iml
+.idea/
+
+# Gradle Wrapper
+gradle/wrapper
+gradlew
+gradlew.bat
+EOF
+}
