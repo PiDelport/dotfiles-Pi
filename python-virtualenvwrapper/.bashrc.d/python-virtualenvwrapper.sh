@@ -16,6 +16,6 @@ alias mkvirtualenv='mkvirtualenv --extra-search-dir="$HOME/.cache/pip-wheelhouse
 
 # Python 3 variants of the usual virtualenv-creating commands.
 #
-alias mkproject3='mktmpenv --python="$(which python3)"'
+alias mkproject3='mkproject --python="$(which python3)"'
 alias mktmpenv3='mktmpenv --python="$(which python3)"'
 alias mkvirtualenv3='mkvirtualenv --python="$(which python3)"'
