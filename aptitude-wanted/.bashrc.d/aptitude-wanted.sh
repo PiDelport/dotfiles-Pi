@@ -14,6 +14,11 @@ ___aptitude_remove_want () {
     sudo aptitude remove-user-tag wanted "$@"
 }
 
+# List the wanted packages, and their status.
+___aptitude_list_wanted () {
+    aptitude search '?user-tag(wanted)'
+}
+
 
 # Schedule wanted packages for installation.
 ___aptitude_install_wanted () {
