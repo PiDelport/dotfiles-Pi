@@ -18,6 +18,11 @@ ___aptitude_remove_want () {
 ___aptitude_list_wanted () {
     aptitude search '?user-tag(wanted)'
 }
+# List non-wanted, non-automatically-installed packages.
+# These can be uninstalled, or marked wanted.
+___aptitude_list_nonwanted () {
+    aptitude search '!?user-tag(wanted) !~M ~i'
+}
 
 
 # Schedule wanted packages for installation.
