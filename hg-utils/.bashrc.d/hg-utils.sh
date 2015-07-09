@@ -21,6 +21,11 @@ mr_hg_out () {
     mr "${@:-"-qj"}" run sh -c '! hg out --color=always'
 }
 
+# Find and mr register all Mercurial repositories below the given path(s).
+mr_reg_all () {
+    find "${@:-'.'}" -type d -name .hg -o -name .git -prune -print0 | xargs -0 dirname --zero | xargs -0 -n1 mr register
+}
+
 
 # See https://bitbucket.org/snippets/pjdelport/5oxe/mercurial-common-hgignore-patterns
 
