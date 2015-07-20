@@ -3,10 +3,11 @@
 # Configure a virtualenv to have DJANGO_SETTINGS_MODULE set.
 ___django_set_settings_module () {
     : ${VIRTUAL_ENV:?'$VIRTUAL_ENV not set!'}
-    echo "Configuring DJANGO_SETTINGS_MODULE=settings in $VIRTUAL_ENV"
-    echo 'export DJANGO_SETTINGS_MODULE=settings' >>"$VIRTUAL_ENV"/bin/postactivate
+    local settings_module="${1:-dev_settings}"
+    echo "Configuring DJANGO_SETTINGS_MODULE='$settings_module' in $VIRTUAL_ENV"
+    echo "export DJANGO_SETTINGS_MODULE='$settings_module'" >>"$VIRTUAL_ENV"/bin/postactivate
     echo 'unset DJANGO_SETTINGS_MODULE' >>"$VIRTUAL_ENV"/bin/postdeactivate
-    export DJANGO_SETTINGS_MODULE=settings
+    export DJANGO_SETTINGS_MODULE="$settings_module"
 }
 
 # Create a stock superuser account.
