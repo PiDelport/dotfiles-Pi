@@ -23,7 +23,7 @@ mr_hg_out () {
 
 # Find and mr register all Mercurial repositories below the given path(s).
 mr_reg_all () {
-    find "${@:-'.'}" -type d -name .hg -o -name .git -prune -print0 | xargs -0 dirname --zero | xargs -0 -n1 mr register
+    find "${@:-.}" -type d '(' -name .hg -o -name .git ')' -prune -print0 | xargs -0 dirname --zero | xargs -0 -n1 mr register
 }
 
 
