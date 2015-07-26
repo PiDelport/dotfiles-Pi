@@ -38,14 +38,13 @@ syntax: glob
 *.pyo
 __pycache__
 
-# distutils / setuptools
-*.egg
+# setuptools-generated
 *.egg-info/
 .eggs/
 build/
 dist/
 
-# Tox
+# Tox working directory
 .tox
 EOF
 }
