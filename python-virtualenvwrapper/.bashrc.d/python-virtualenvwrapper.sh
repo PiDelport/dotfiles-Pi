@@ -3,8 +3,12 @@
 # See http://virtualenvwrapper.readthedocs.org/
 
 
-# Python 3 variants of the usual virtualenv-creating commands.
+# Versioned variants of the usual virtualenv-creating commands.
 #
-alias mkproject3='mkproject --python="$(which python3)"'
-alias mktmpenv3='mktmpenv --python="$(which python3)"'
-alias mkvirtualenv3='mkvirtualenv --python="$(which python3)"'
+for ver in 2 3 2.7 3.4 3.5; do
+    if test -x "$(which python${ver})"; then
+        alias mkproject${ver}='mkproject --python="$(which python'${ver}')"'
+        alias mktmpenv${ver}='mktmpenv --python="$(which python'${ver}')"'
+        alias mkvirtualenv${ver}='mkvirtualenv --python="$(which python'${ver}')"'
+    fi
+done
