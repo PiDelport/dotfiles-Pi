@@ -46,6 +46,9 @@ dist/
 
 # Tox working directory
 .tox
+
+# pytest cache directory
+.cache/
 EOF
 }
 
