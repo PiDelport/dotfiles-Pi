@@ -12,4 +12,16 @@ if which stack >/dev/null; then
         }
     fi
 
+    # Same for ghc and runghc, but these can actually use @ for correct quoting.
+    if ! which ghc >/dev/null; then
+        ghc () {
+            stack ghc ${@:+-- "$@"}
+        }
+    fi
+    if ! which runghc >/dev/null; then
+        runghc () {
+            stack runghc ${@:+-- "$@"}
+        }
+    fi
+
 fi
