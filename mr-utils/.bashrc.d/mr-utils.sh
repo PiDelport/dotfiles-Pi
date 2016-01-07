@@ -19,6 +19,18 @@ mr_hg_out () {
     mr "${@:-"-qj"}" run sh -c '! hg out --color=always'
 }
 
+# As above, but for git.
+#
+# Note that these git commands don't give a useful exit status, so we use grep
+# to get a status based on the presence or absence of command output, instead.
+#
+mr_git_in () {
+    mr "${@:-"-qj"}" run sh -c '! git fetch --all --dry-run 2>&1 | grep -v "^Fetching " | grep .'
+}
+mr_git_out () {
+    mr "${@:-"-qj"}" run sh -c '! git push --all --dry-run 2>&1 | grep -v "^Everything up-to-date$" | grep .'
+}
+
 # Find and "mr register" all hg/git repositories below the given path(s).
 mr_reg_all () {
     find "${@:-.}" -type d '(' -name .hg -o -name .git ')' -prune -print0 | xargs -0 dirname --zero | xargs -0 -n1 mr register
