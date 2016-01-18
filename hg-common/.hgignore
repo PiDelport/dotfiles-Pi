@@ -3,7 +3,7 @@ syntax: glob
 
 # {{{1 Vim
 
-# Swap files
+# Vim swap files
 .*.swp
 .*.swo
 .*.swn
