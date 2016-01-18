@@ -5,6 +5,9 @@
 # [include]
 # path = ~/.gitconfig.common
 
+[core]
+excludesfile = ~/.gitignore.common
+
 [push]
 # Squelch the default warning message about this.
 default = simple

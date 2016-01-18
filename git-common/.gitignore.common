@@ -1,0 +1,8 @@
+# Vim swap files
+.*.swp
+.*.swn
+.*.swo
+
+# IntellJ IDEA (PyCharm, Android Studio, etc.)
+*.iml
+.idea/
