@@ -25,3 +25,21 @@ if which stack >/dev/null; then
     fi
 
 fi
+
+
+# Create a symlinked .stack-work directory under ~/.cache/stack-work
+cachestack () {
+    local dir=~/.cache/stack-work/"$(basename "$PWD")"
+    if test -e "$dir"; then
+        echo "$dir exists!"
+    elif test -e ".stack-work"; then
+        echo ".stack-work exists!"
+    else
+        mkdir -p "$dir" && ln -s "$dir" .stack-work
+    fi
+}
+
+# Migrate an existing .stack-work directory to ~/.cache/stack-work
+cachestack_convert () {
+    mv --no-target-directory .stack-work .stack-work-temp && cachestack && mv .stack-work-temp/* .stack-work && rmdir .stack-work-temp
+}
