@@ -1,6 +1,6 @@
 # Tox-related helpers.
 
-# Create a symlinked .tox directory under ~/cache/tox
+# Create a symlinked .tox directory under ~/.cache/tox
 cachetox () {
     local dir=~/.cache/tox/"$(basename "$PWD")"
     if test -e "$dir"; then
@@ -12,7 +12,7 @@ cachetox () {
     fi
 }
 
-# Migrate an existing .tox directory to ~/cache/tox
+# Migrate an existing .tox directory to ~/.cache/tox
 cachetox_convert () {
     mv --no-target-directory .tox .tox_temp && cachetox && mv .tox_temp/* .tox && rmdir .tox_temp
 }
