@@ -8,7 +8,7 @@ if which stack >/dev/null; then
         # This is a bit hacky, but can run with or without options to ghci.
         ghci () {
             # Note: Intentionally uses * instead of @.
-            stack ghci ${*:+--ghc-options "$*"}
+            stack ghci ${*:+--ghci-options "$*"}
         }
     fi
 
