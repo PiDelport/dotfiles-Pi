@@ -22,5 +22,6 @@ bs = branch -vv
 in = fetch --dry-run
 out = push --all --dry-run
 safepull = pull --ff-only
+fall = fetch --all
 
 # vim: set ft=gitconfig:
