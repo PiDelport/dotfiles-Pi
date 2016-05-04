@@ -71,3 +71,6 @@ ssh-config-dir
 
 hg-common
     See ``~/.hgrc.common``, and include it from ``~/.hgrc``.
+
+git-common
+    See ``~/.gitconfig.common``, and include it from ``~/.gitconfig``.
