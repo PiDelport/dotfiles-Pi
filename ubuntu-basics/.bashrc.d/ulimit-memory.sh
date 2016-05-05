@@ -4,6 +4,6 @@ ___ulimit_virtual () {
     ulimit -S -v ${1:+"$(( $1 * 2**20 ))"}
 }
 
-# Soft-limit the default maximum virtual memory to 1 GiB
+# Soft-limit the default maximum virtual memory to 2 GiB
 # to soften the blow from accidental runaway processes.
-___ulimit_virtual 1
+___ulimit_virtual 2
