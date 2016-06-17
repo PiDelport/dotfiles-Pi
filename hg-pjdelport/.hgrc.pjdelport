@@ -5,7 +5,7 @@
 # %include ~/.hgrc.pjdelport
 
 [ui]
-username = Piët Delport <pjdelport@gmail.com>
+username = Pi Delport <pjdelport@gmail.com>
 
 
 # Vim does not recognize this filename, default.

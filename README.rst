@@ -1,5 +1,5 @@
 =======================
-Piët Delport's dotfiles
+Pi Delport's dotfiles
 =======================
 
 This is my personal repository of Unix configuration files or *dotfiles*,
