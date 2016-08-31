@@ -12,7 +12,7 @@ if which stack >/dev/null; then
         }
     fi
 
-    # Same for ghc and runghc, but these can actually use @ for correct quoting.
+    # Same for ghc and runghc / runhaskell, but these can actually use @ for correct quoting.
     if ! which ghc >/dev/null; then
         ghc () {
             stack ghc ${@:+-- "$@"}
@@ -21,6 +21,11 @@ if which stack >/dev/null; then
     if ! which runghc >/dev/null; then
         runghc () {
             stack runghc ${@:+-- "$@"}
+        }
+    fi
+    if ! which runhaskell >/dev/null; then
+        runhaskell () {
+            stack runhaskell ${@:+-- "$@"}
         }
     fi
 
