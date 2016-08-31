@@ -22,7 +22,7 @@ ___install_lxml_deps () { sudo aptitude install libz-dev libxml2-dev libxslt-dev
 ___install_pillow_deps () { sudo aptitude install zlib1g-dev libjpeg-dev libwebp-dev liblcms2-dev libfreetype6-dev; }
 ___install_postgresql_deps () { sudo aptitude install libpq-dev; }
 ___install_geodjango_deps () { sudo aptitude install libgeos-dev libgeos++-dev libproj-dev libgdal-dev; }
-___install_spatialite_deps () { ___install_geodjango_deps; sudo aptitude install sqlite3 spatialite-bin; }
+___install_spatialite_deps () { ___install_geodjango_deps; sudo aptitude install sqlite3 spatialite-bin libsqlite3-mod-spatialite; }
 
 # Prepare a Spatialite database for use.
 ___init_spatialite_db () {
