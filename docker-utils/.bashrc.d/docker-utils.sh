@@ -45,3 +45,33 @@ ___docker_image_diff () {
     local diff_command="${3:-diff}"
     $diff_command <(___docker_image_manifest "$image1" | sort) <(___docker_image_manifest "$image2" | sort)
 }
+
+
+# List all top-level image repository tags.
+#
+# This works by listing the RepoTags fields for all unique top-level images.
+#
+___docker_list_image_tags () {
+    docker inspect --format "{{range .RepoTags}}{{println .}}{{end}}" $(docker images -q | uniq) | grep -v '^$'
+}
+
+
+# Refresh images by running "docker pull" on all top-level image tags.
+#
+___docker_refresh_images () {
+    for tag in $(___docker_list_image_tags); do
+        docker pull "$tag"
+    done
+}
+
+
+# Like ___docker_refresh_images, but pull the tags concurrently.
+#
+# (This messes up the docker command output, but is quicker for many images.)
+#
+___docker_refresh_images_concurrently () {
+    for tag in $(___docker_list_image_tags); do
+        docker pull "$tag" &
+    done
+    wait
+}
