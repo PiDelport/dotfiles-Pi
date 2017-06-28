@@ -7,8 +7,9 @@ ___docker_stale_list () {
     echo
     docker images -f dangling=true
     echo
+}
+___docker_stale_list_volumes () {
     docker volume ls -f dangling=true
-    echo
 }
 
 
@@ -16,6 +17,8 @@ ___docker_stale_list () {
 ___docker_stale_cleanup () {
     docker rm -v $(docker ps -q -f status=exited)
     docker rmi $(docker images -q -f dangling=true)
+}
+___docker_stale_cleanup_volumes () {
     docker volume rm $(docker volume ls -q -f dangling=true)
 }
 
