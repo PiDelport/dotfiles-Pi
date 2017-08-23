@@ -30,7 +30,19 @@ set smartcase
 set wildmode=longest,full
 
 " Terminal-specific
-if !has('gui_running')
+"
+" Note: neovim-qt doesn't support has('gui_running') like Classic Vim does,
+" so for now, let's differentiate by looking for xterm instead.
+"
+" See:
+" https://github.com/equalsraf/neovim-qt/issues/102
+" https://github.com/equalsraf/neovim-qt/issues/94
+"
+if has ('nvim') && $TERM =~# '^xterm'
+  " Neovim
+  set background=dark
+elseif !has ('nvim') && !has('gui_running')
+  " Classic Vim
   set background=dark
   set mouse=a
 endif
