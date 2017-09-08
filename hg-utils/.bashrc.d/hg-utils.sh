@@ -46,3 +46,20 @@ gradlew
 gradlew.bat
 EOF
 }
+
+
+# Local .hg/hgrc snippets
+
+hgrc_username () {
+cat <<EOF
+[ui]
+username = Pi Delport <pjdelport@gmail.com>
+EOF
+}
+
+hgrc_flake8 () {
+cat <<EOF
+[hooks]
+pretxncommit.flake8 = flake8
+EOF
+}
