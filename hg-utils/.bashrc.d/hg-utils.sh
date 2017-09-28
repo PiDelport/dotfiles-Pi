@@ -63,3 +63,21 @@ cat <<EOF
 pretxncommit.flake8 = flake8
 EOF
 }
+
+
+# Find and list Mercurial repos under a path
+___hg_find_repos () {
+    find "${@:-.}" -type d -name .hg -prune -printf '%h\n'
+}
+
+# State summary of all Mercurial repos under a path
+___hg_summary () {
+    ___hg_find_repos "$@" | (
+        while read repo; do
+            if hg -R "$repo" path default -q; then
+                hg -R "$repo" summary --remote | grep -E '^(commit|update|phase|remote): ' | grep -v 'commit: (clean)\|update: (current)\|remote: (synced)' | xargs --no-run-if-empty echo "$repo:" &
+            fi
+        done
+        wait
+    )
+}
