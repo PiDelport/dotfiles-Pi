@@ -1,6 +1,12 @@
 # Docker utilities
 
 
+# Shortcut: "rundocker python", "rundocker haskell", etc.
+rundocker () {
+    docker run -it --rm "$@"
+}
+
+
 # List stale containers, images, and volumes.
 ___docker_stale_list () {
     docker ps -f status=exited
