@@ -12,8 +12,8 @@ ___django_set_settings_module () {
 
 # Create a stock superuser account.
 ___django_add_superuser () {
-    django-admin.py createsuperuser --noinput --email piet@example.com piet
-    django-admin.py changepassword piet@example.com
+    django-admin.py createsuperuser --noinput --email pi@example.com pi
+    django-admin.py changepassword pi@example.com
 }
 
 # Install various sets of system package dependencies.
