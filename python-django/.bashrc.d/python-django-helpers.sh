@@ -28,3 +28,19 @@ ___install_spatialite_deps () { ___install_geodjango_deps; sudo aptitude install
 ___init_spatialite_db () {
     spatialite ${1:?"Usage: ___init_spatialite_db <database>"} 'SELECT InitSpatialMetaData();'
 }
+
+
+# Show a diff between the Django migration states of two Mercurial checkouts.
+#
+# Use this on a clean checkout!
+#
+# The optional third argument overrides the diff command to invoke.
+# Examples: 'diff -u', vimdiff, meld
+#
+___django_migrations_diff () {
+    local usage="Usage: ___django_migrations_diff REV1 REV2 [diff command]"
+    local rev1="${1:?$usage}"
+    local rev2="${2:?$usage}"
+    local diff_command="${3:-diff -u}"
+    $diff_command <( hg up -q "$rev1" && django-admin showmigrations) <( hg up -q "$rev2" && django-admin showmigrations)
+}
