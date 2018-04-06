@@ -17,11 +17,11 @@ __pycache__
 build/
 dist/
 
-# Tox working directory
+# Testing tools
+.hypothesis/
+.mypy_cache/
+.pytest_cache/
 .tox
-
-# pytest cache directory
-.cache/
 EOF
 }
 
