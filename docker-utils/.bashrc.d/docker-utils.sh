@@ -32,7 +32,7 @@ ___docker_stale_cleanup_volumes () {
 # Show a filesystem manifest for an image.
 ___docker_image_manifest () {
     local usage="Usage: ___docker_image_manifest IMAGE"
-    local image="${1:?$usage}"
+    local image="${1:?"$usage"}"
 
     # This is just a find invocation, so it won't work on images without find.
     #
@@ -48,10 +48,10 @@ ___docker_image_manifest () {
 # Examples: 'diff -u', vimdiff, meld
 #
 ___docker_image_diff () {
-    local usage="Usage: ___docker_image_diff IMAGE1 IMAGE2 [diff command]"
-    local image1="${1:?$usage}"
-    local image2="${2:?$usage}"
-    local diff_command="${3:-diff}"
+    local usage="Usage: ___docker_image_diff IMAGE1 IMAGE2 [diff command]  (See also: docker history IMAGE)"
+    local image1="${1:?"$usage"}"
+    local image2="${2:?"$usage"}"
+    local diff_command="${3:-'diff'}"
     $diff_command <(___docker_image_manifest "$image1" | sort) <(___docker_image_manifest "$image2" | sort)
 }
 

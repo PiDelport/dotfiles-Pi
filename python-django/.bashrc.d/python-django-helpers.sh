@@ -3,7 +3,7 @@
 # Configure a virtualenv to have DJANGO_SETTINGS_MODULE set.
 ___django_set_settings_module () {
     : ${VIRTUAL_ENV:?'$VIRTUAL_ENV not set!'}
-    local settings_module="${1:-dev_settings}"
+    local settings_module="${1:-'dev_settings'}"
     echo "Configuring DJANGO_SETTINGS_MODULE='$settings_module' in $VIRTUAL_ENV"
     echo "export DJANGO_SETTINGS_MODULE='$settings_module'" >>"$VIRTUAL_ENV"/bin/postactivate
     echo 'unset DJANGO_SETTINGS_MODULE' >>"$VIRTUAL_ENV"/bin/postdeactivate
@@ -39,8 +39,8 @@ ___init_spatialite_db () {
 #
 ___django_migrations_diff () {
     local usage="Usage: ___django_migrations_diff REV1 REV2 [diff command]"
-    local rev1="${1:?$usage}"
-    local rev2="${2:?$usage}"
-    local diff_command="${3:-diff -u}"
+    local rev1="${1:?"$usage"}"
+    local rev2="${2:?"$usage"}"
+    local diff_command="${3:-'diff -u'}"
     $diff_command <( hg up -q "$rev1" && django-admin showmigrations) <( hg up -q "$rev2" && django-admin showmigrations)
 }
