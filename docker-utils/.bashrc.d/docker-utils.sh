@@ -84,3 +84,7 @@ ___docker_refresh_images_concurrently () {
     done
     wait
 }
+
+
+# Docker utility shortcuts:
+___docker_dive () { rundocker -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive "$@"; }
