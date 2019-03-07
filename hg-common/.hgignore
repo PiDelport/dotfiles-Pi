@@ -27,3 +27,7 @@ tags
 
 # Ninja IDE
 *.nja
+
+# pytest-testmon
+.testmondata/
+.tmontmp/
