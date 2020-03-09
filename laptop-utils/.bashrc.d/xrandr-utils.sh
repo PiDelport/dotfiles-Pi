@@ -42,14 +42,13 @@ ___xrandr_prop () {
 }
 
 
-# Gamma shortcuts.
-___xrandr_gamma_lvds () { ___xrandr_gamma LVDS1 "$@"; }
-___xrandr_gamma_hdmi () { ___xrandr_gamma HDMI1 "$@"; }
-
 # Useful settings for home (as of early 2019):
-___xrandr_gamma_calibrated () {
-    ___xrandr_gamma_lvds 1.3  # Ideapad Z570 onboard display.
-    ___xrandr_gamma_hdmi 1.75  # Hisense D36 TV, with contrast low (10–30, default 50).
+___xrandr_gamma_calibrated_ideapad () {
+    ___xrandr_gamma LVDS1 1.3  # Ideapad Z570 onboard display.
+    ___xrandr_gamma HDMI1 1.75  # Hisense D36 TV, with contrast low (10–30, default 50).
+}
+___xrandr_gamma_calibrated_asus () {
+    ___xrandr_gamma HDMI-1-1 1.75  # Hisense D36 TV, with contrast low (10–30, default 50).
 }
 
 # For adjusting the Ideapad Z570 onboard display brightness.
