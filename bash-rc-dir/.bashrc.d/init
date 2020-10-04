@@ -1,0 +1,4 @@
+# Source all *.sh files in the ~/.bashrc.d directory, if it exists.
+for f in ~/.bashrc.d/*.sh; do
+    . "$f"
+done
