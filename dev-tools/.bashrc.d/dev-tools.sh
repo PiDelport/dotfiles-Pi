@@ -1,5 +1,9 @@
 # Node
 
+___install_node_snap () (
+    sudo snap install node --classic
+)
+
 if which npm >/dev/null; then
     source <(npm completion)
 fi
