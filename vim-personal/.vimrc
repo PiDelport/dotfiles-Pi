@@ -1,5 +1,7 @@
 " This must be set before plugin loading starts.
-let mapleader = ','
+if has('eval')
+  let mapleader = ','
+endif
 
 filetype plugin indent on
 
