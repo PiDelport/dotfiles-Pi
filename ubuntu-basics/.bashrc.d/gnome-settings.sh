@@ -12,6 +12,9 @@ ___gsettings_set () {
     # Sensible workspace-scoped Alt-Tab
     gsettings set org.gnome.shell.app-switcher current-workspace-only 'true'
 
+    # Natural scrolling for mouse
+    gsettings set org.gnome.desktop.peripherals.mouse natural-scroll 'true'
+
     # Include date & week numbers in the top toolbar clock & calendar.
     gsettings set org.gnome.desktop.calendar show-weekdate 'true'
     gsettings set org.gnome.desktop.interface clock-format '12h'
