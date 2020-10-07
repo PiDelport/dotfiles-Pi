@@ -9,6 +9,9 @@ ___gsettings_set () {
     #
     gsettings set org.gnome.desktop.input-sources xkb-options "['compose:menu', 'caps:escape', 'numpad:microsoft']"
 
+    # Add Dvorak keyboard layout
+    gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us+dvorak'), ('xkb', 'us')]"
+
     # Sensible workspace-scoped Alt-Tab
     gsettings set org.gnome.shell.app-switcher current-workspace-only 'true'
 
