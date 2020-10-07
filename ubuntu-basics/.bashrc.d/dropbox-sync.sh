@@ -15,5 +15,11 @@ ___sync () {
         echo
         echo "mkdir -p ${target@Q}"
         echo
+        if test -d "$PWD/.git" && local origin_url=$(git remote get-url origin); then
+            echo
+            echo "Or:"
+            echo
+            echo "git clone ${origin_url@Q} ${target@Q}"
+        fi
     fi
 }
