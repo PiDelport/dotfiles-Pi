@@ -10,15 +10,15 @@ ___gsettings_set () {
     gsettings set org.gnome.desktop.input-sources xkb-options "['compose:menu', 'caps:escape', 'numpad:microsoft']"
 
     # Sensible workspace-scoped Alt-Tab
-    gsettings set org.gnome.shell.app-switcher current-workspace-only true
+    gsettings set org.gnome.shell.app-switcher current-workspace-only 'true'
 
     # Include date & week numbers in the top toolbar clock & calendar.
-    gsettings set org.gnome.desktop.interface clock-show-date true
-    gsettings set org.gnome.desktop.calendar show-weekdate true
+    gsettings set org.gnome.desktop.calendar show-weekdate 'true'
+    gsettings set org.gnome.desktop.interface clock-show-date 'true'
 
     # Enable limited visual bell
-    gsettings set org.gnome.desktop.wm.preferences visual-bell true
-    gsettings set org.gnome.desktop.wm.preferences visual-bell-type frame-flash
+    gsettings set org.gnome.desktop.wm.preferences visual-bell 'true'
+    gsettings set org.gnome.desktop.wm.preferences visual-bell-type 'frame-flash'
 
 }
 
