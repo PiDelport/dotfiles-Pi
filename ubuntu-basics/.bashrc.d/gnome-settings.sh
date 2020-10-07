@@ -14,7 +14,9 @@ ___gsettings_set () {
 
     # Include date & week numbers in the top toolbar clock & calendar.
     gsettings set org.gnome.desktop.calendar show-weekdate 'true'
+    gsettings set org.gnome.desktop.interface clock-format '12h'
     gsettings set org.gnome.desktop.interface clock-show-date 'true'
+    gsettings set org.gnome.desktop.interface clock-show-weekday 'true'
 
     # Enable limited visual bell
     gsettings set org.gnome.desktop.wm.preferences visual-bell 'true'
