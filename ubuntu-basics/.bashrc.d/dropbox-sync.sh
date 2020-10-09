@@ -1,3 +1,4 @@
+# Sync directory with Dropbox mirror.
 ___sync () {
     local target="$HOME/Dropbox${PWD#"$HOME"}"
     if test -d "$target"; then
