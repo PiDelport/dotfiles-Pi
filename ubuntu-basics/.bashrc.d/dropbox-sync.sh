@@ -24,3 +24,9 @@ ___sync () {
         fi
     fi
 }
+
+# Quickly jump to the synced Dropbox mirror directory.
+___cd_sync () {
+    local target="$HOME/Dropbox${PWD#"$HOME"}"
+    cd "$target"
+}
