@@ -28,6 +28,9 @@ ___gsettings_set () {
     gsettings set org.gnome.desktop.wm.preferences visual-bell 'true'
     gsettings set org.gnome.desktop.wm.preferences visual-bell-type 'frame-flash'
 
+    # Enable Night Light
+    gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled 'true'
+
 }
 
 
