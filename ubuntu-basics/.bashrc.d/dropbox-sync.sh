@@ -1,12 +1,16 @@
 # Sync directory with Dropbox mirror.
 ___sync () {
-    local target="$HOME/Dropbox${PWD#"$HOME"}"
-    if test -d "$target"; then
+    local source="${1:-$PWD}"
+    local target="$HOME/Dropbox/$(realpath --relative-to="$HOME" "$source")"
+    if test -f "$source"; then
+        # If source is a file, assume we just want to sync the file.
+        meld "$source" "$target"
+    elif test -d "$target"; then
         if test -d "$target/.git"; then
             echo "git -C ${target@Q} pull --ff-only"
             git -C "$target" pull --ff-only || return $?
         fi
-        meld "$PWD" "$target"
+        meld "$source" "$target"
     elif test -e "$target"; then
         echo "${target@Q} already exists, but isn't a directory?"
     else
@@ -16,7 +20,7 @@ ___sync () {
         echo
         echo "mkdir -p ${target@Q}"
         echo
-        if test -d "$PWD/.git" && local origin_url=$(git remote get-url origin); then
+        if test -d "$source/.git" && local origin_url=$(git remote get-url origin); then
             echo
             echo "Or:"
             echo
