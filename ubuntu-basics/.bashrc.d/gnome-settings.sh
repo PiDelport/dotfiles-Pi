@@ -1,13 +1,14 @@
-
 # Set various gsettings preferences of mine.
 ___gsettings_set () {
     # See xkeyboard-config(7)
     #
-    # compose:menu      Make Menu key Compose
+    # compose:menu      Compose key: Menu
+    # compose:prsc      Compose key: Print Screen
+    # compose:ralt      Compose key: Right Alt
     # caps:escape       Make Caps Lock an additional Esc
     # numpad:microsoft  Make Shift work with numpad navigation keys
     #
-    gsettings set org.gnome.desktop.input-sources xkb-options "['compose:menu', 'caps:escape', 'numpad:microsoft']"
+    gsettings set org.gnome.desktop.input-sources xkb-options "['compose:menu', 'compose:prsc', 'compose:ralt', 'caps:escape', 'numpad:microsoft']"
 
     # Add Dvorak keyboard layout
     gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us+dvorak'), ('xkb', 'us')]"
