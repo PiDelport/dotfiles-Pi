@@ -32,6 +32,8 @@ ___gsettings_set () {
     # Enable Night Light
     gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled 'true'
 
+    # Meld
+    gsettings set org.gnome.meld highlight-syntax 'true'
 }
 
 
