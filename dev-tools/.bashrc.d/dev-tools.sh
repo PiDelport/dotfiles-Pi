@@ -12,8 +12,8 @@ fi
 
 ___install_docker-compose () (
     set -ex
-    # https://github.com/docker/compose/releases
-    local release='1.24.0'
+    # https://github.com/docker/compose/releases/latest
+    local release="$(curl -sS https://api.github.com/repos/docker/compose/releases/latest | jq -r .tag_name)"
     local kernel="$(uname -s)"
     local machine="$(uname -m)"
     local url="https://github.com/docker/compose/releases/download/${release}/docker-compose-${kernel}-${machine}"
