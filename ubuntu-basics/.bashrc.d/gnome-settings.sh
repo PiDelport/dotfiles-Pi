@@ -32,6 +32,9 @@ ___gsettings_set () {
     # Enable Night Light
     gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled 'true'
 
+    # Auto-hide the Dock
+    gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed 'false'
+
     # Meld
     gsettings set org.gnome.meld highlight-syntax 'true'
 }
