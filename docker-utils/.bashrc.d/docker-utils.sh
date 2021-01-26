@@ -34,6 +34,17 @@ ___docker_image_manifest () {
     local usage="Usage: ___docker_image_manifest IMAGE"
     local image="${1:?"$usage"}"
 
+    local container="$(docker container create "$image")"
+    docker container export "$container" | tar -tv
+    docker container rm "$container" >/dev/null
+}
+
+# XXX: Old / alternative version, using find.
+# Not all images will support this, but it might be useful if the container export
+___docker_image_manifest_find () {
+    local usage="Usage: ___docker_image_manifest_find IMAGE"
+    local image="${1:?"$usage"}"
+
     # This is just a find invocation, so it won't work on images without find.
     #
     # The -mount option prevents find from descending into special mounts such
