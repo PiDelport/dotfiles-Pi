@@ -62,7 +62,7 @@ ___docker_image_diff () {
     local usage="Usage: ___docker_image_diff IMAGE1 IMAGE2 [diff command]  (See also: docker history IMAGE)"
     local image1="${1:?"$usage"}"
     local image2="${2:?"$usage"}"
-    local diff_command="${3:-'diff'}"
+    local diff_command="${3:-diff}"
     $diff_command <(___docker_image_manifest "$image1" | sort) <(___docker_image_manifest "$image2" | sort)
 }
 
