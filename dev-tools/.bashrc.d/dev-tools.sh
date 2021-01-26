@@ -1,7 +1,8 @@
 # Node
 
 ___install_node_snap () (
-    sudo snap install node --classic
+    # XXX 2021-01-26: Use the latest LTS, rather than defaulting to 12.
+    sudo snap install node --classic --channel=14/stable
 )
 
 if which npm >/dev/null; then
