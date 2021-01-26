@@ -63,7 +63,7 @@ ___docker_image_diff () {
     local image1="${1:?"$usage"}"
     local image2="${2:?"$usage"}"
     local diff_command="${3:-diff}"
-    $diff_command <(___docker_image_manifest "$image1" | sort) <(___docker_image_manifest "$image2" | sort)
+    $diff_command <(___docker_image_manifest "$image1") <(___docker_image_manifest "$image2")
 }
 
 
