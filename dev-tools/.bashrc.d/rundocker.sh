@@ -42,3 +42,8 @@ _rundocker () {
     __docker_complete_images --repo --tag --id
 }
 complete -F _rundocker rundocker
+
+
+# Command definitions:
+
+dotenv-linter () { RUNDOCKER_WITH='ro nonet user cwd' rundocker dotenvlinter/dotenv-linter "$@"; }
