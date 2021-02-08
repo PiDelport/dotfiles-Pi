@@ -1,12 +1,6 @@
 # Docker utilities
 
 
-# Shortcut: "rundocker python", "rundocker haskell", etc.
-rundocker () {
-    docker run -it --rm "$@"
-}
-
-
 # List stale containers, images, and volumes.
 ___docker_stale_list () {
     docker ps -f status=exited
@@ -98,4 +92,4 @@ ___docker_refresh_images_concurrently () {
 
 
 # Docker utility shortcuts:
-___docker_dive () { rundocker -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive "$@"; }
+___docker_dive () { docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive "$@"; }
