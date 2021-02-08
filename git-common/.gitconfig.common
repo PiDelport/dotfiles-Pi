@@ -18,7 +18,7 @@ ui = true
 # Convenience aliases.
 [alias]
 st = status
-bs = branch -vv --sort authordate
+bs = branch -vv --sort=committerdate
 in = fetch --dry-run
 out = push --all --dry-run
 safepull = pull --ff-only
