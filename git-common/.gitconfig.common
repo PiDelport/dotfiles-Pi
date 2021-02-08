@@ -22,6 +22,7 @@ bs = branch -vv --sort=committerdate
 in = fetch --dry-run
 out = push --all --dry-run
 safepull = pull --ff-only
+pushup = push --force-with-lease
 fall = fetch --all
 pending = branch -vv --no-merged
 merged = branch -vv --merged
