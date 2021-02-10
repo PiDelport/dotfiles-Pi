@@ -17,6 +17,8 @@ ui = true
 
 # Convenience aliases.
 [alias]
+c = checkout
+p = push
 st = status
 bs = branch -vv --sort=committerdate
 in = fetch --dry-run
