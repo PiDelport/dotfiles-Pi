@@ -8,6 +8,10 @@
 rundocker () {
     local -a docker_args=()
 
+    # --tty is incompatible with redirecting the docker client standard input:
+    # only add it if the standard input is a TTY.
+    test -t 0 && docker_args+=(--tty)
+
     local tag
     for tag in $RUNDOCKER_WITH; do
         case "$tag" in
@@ -26,7 +30,7 @@ rundocker () {
         esac
     done
 
-    docker run -it --rm "${docker_args[@]}" "$@"
+    docker run -i --rm "${docker_args[@]}" "$@"
 }
 
 # rundocker completion: complete Docker image names.
