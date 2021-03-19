@@ -6,8 +6,6 @@
 # (This is meant to be used by command definitions: see below.)
 #
 rundocker () {
-    local -A CAPS
-
     local tag
     local -a docker_args=()
     for tag in $RUNDOCKER_WITH; do
