@@ -18,15 +18,35 @@ ui = true
 # Convenience aliases.
 [alias]
 c = checkout
+d = diff HEAD
+f = fetch
+fa = fetch --all
 p = push
-st = status
+st = status --short --branch
+sta = status --show-stash
+sw = switch
+
 bs = branch -vv --sort=committerdate
+bu = branch -vv --sort=committerdate --no-merged
+bm = branch -vv --sort=committerdate --merged
+bd = branch -d
+bD = branch -D
+
+sb = show-branch
+sbt = show-branch --topics
+
 in = fetch --dry-run
 out = push --all --dry-run
-safepull = pull --ff-only
+ff = pull --ff-only
 pushup = push --force-with-lease
-fall = fetch --all
-pending = branch -vv --no-merged
-merged = branch -vv --merged
+
+l = log --graph --oneline -n 10
+ls = l --stat
+
+rl = reflog -n 10
+rlc = reflog -n 10 --grep-reflog='^checkout: '
+rld = reflog -n 10 --date=relative
+
+aliases = config --get-regexp  '^alias\\.'
 
 # vim: set ft=gitconfig:
