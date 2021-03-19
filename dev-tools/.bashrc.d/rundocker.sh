@@ -6,8 +6,9 @@
 # (This is meant to be used by command definitions: see below.)
 #
 rundocker () {
-    local tag
     local -a docker_args=()
+
+    local tag
     for tag in $RUNDOCKER_WITH; do
         case "$tag" in
             ro)
