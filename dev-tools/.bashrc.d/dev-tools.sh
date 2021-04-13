@@ -34,7 +34,7 @@ fi
 
 ___install_terraform () (
     set -ex
-    local version='0.11.13'
+    local version='0.14.10'
     cd ~/.local/bin
     local zipfile="terraform_${version}_linux_amd64.zip"
     curl -LROC- "https://releases.hashicorp.com/terraform/${version}/${zipfile}"
