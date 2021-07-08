@@ -9,6 +9,11 @@ if which npm >/dev/null; then
     source <(npm completion)
 fi
 
+if which fnm >/dev/null; then
+    eval "$(fnm env)"
+    eval "$(fnm completions)"
+fi
+
 # Docker:
 
 ___install_docker-compose () (
