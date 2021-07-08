@@ -30,7 +30,8 @@ bs = branch -vv --sort=committerdate
 bu = branch -vv --sort=committerdate --no-merged
 bm = branch -vv --sort=committerdate --merged
 bd = branch -d
-bD = branch -D
+# can't use bD: aliases are case-insensitive
+bdd = branch -D
 
 sb = show-branch
 sbt = show-branch --topics
