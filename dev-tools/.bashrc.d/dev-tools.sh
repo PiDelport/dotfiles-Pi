@@ -78,3 +78,18 @@ ___install_terraform_tflint () (
 ___install_hub_completion () {
     curl -LRC- https://raw.githubusercontent.com/github/hub/master/etc/hub.bash_completion.sh -o ~/.bashrc.d/hub.bash_completion.sh
 }
+
+
+# GitHub CLI: https://github.com/cli/cli/blob/trunk/docs/install_linux.md
+
+___install_gh () {
+    sudo -n apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
+    sudo -n apt-add-repository https://cli.github.com/packages
+    sudo -n apt install -y gh
+
+}
+
+if which gh >/dev/null; then
+    #eval "$(gh completion -s bash)"
+    source <(gh completion -s bash)
+fi
