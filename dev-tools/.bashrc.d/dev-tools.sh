@@ -93,3 +93,10 @@ if which gh >/dev/null; then
     #eval "$(gh completion -s bash)"
     source <(gh completion -s bash)
 fi
+
+# Rust:
+
+# cargo make: https://github.com/sagiegurari/cargo-make#shell-completion
+___install_makers_completion () {
+    curl -LR https://github.com/sagiegurari/cargo-make/raw/master/extra/shell/makers-completion.bash -o ~/.local/share/bash-completion/completions/makers
+}
