@@ -25,6 +25,9 @@ p = push
 st = status --short --branch
 sta = status --show-stash
 sw = switch
+pop = stash pop
+irebase = rebase -i
+autosquash = rebase -i --autosquash
 
 bs = branch -vv --sort=committerdate
 bu = branch -vv --sort=committerdate --no-merged
@@ -32,6 +35,8 @@ bm = branch -vv --sort=committerdate --merged
 bd = branch -d
 # can't use bD: aliases are case-insensitive
 bdd = branch -D
+
+mkdiff3 = mergetool --tool="kdiff3"
 
 sb = show-branch
 sbt = show-branch --topics
