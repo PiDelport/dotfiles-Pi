@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if which sccache >/dev/null; then
+    exec nice sccache "$@"
+else
+    exec nice "$@"
+fi
