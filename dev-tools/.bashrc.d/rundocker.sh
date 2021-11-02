@@ -76,3 +76,8 @@ dockerfile_lint () {
 dockerfilelint () {
     RUNDOCKER_WITH='ro nonet user cwd' rundocker replicated/dockerfilelint "$@";
 }
+
+dockfmt () {
+    RUNDOCKER_WITH='nonet user cwd' rundocker jess/dockfmt "$@";
+}
+
