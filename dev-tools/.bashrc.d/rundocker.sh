@@ -6,6 +6,18 @@
 # (This is meant to be used by command definitions: see below.)
 #
 rundocker () {
+    if test ! 0 -lt "$#"; then
+        echo "Usage: RUNDOCKER_WITH='ro nonet user cwd' rundocker [docker run args …]"
+        echo
+        echo 'RUNDOCKER_WITH options:'
+        echo '  ro       --read-only'
+        echo '  nonet    --network none'
+        echo '  user     --user "$(id -u):$(id -g)"'
+        echo '  cwd      --volume "$PWD":/run/pwd --workdir /run/pwd'
+        echo '  dockerd  --volume /var/run/docker.sock:/var/run/docker.sock'
+        return 1
+    fi
+
     local -a docker_args=()
 
     # --tty is incompatible with redirecting the docker client standard input:
