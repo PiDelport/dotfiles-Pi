@@ -61,7 +61,18 @@ complete -F _rundocker rundocker
 
 # Command definitions:
 
-dotenv-linter () { RUNDOCKER_WITH='ro nonet user cwd' rundocker dotenvlinter/dotenv-linter "$@"; }
-hadolint () { RUNDOCKER_WITH='ro nonet user cwd' rundocker hadolint/hadolint hadolint "$@"; }
-dockerfile_lint () { RUNDOCKER_WITH='ro nonet user cwd' rundocker projectatomic/dockerfile-lint dockerfile_lint "$@"; }
-dockerfilelint () { RUNDOCKER_WITH='ro nonet user cwd' rundocker replicated/dockerfilelint "$@"; }
+dotenv-linter () {
+    RUNDOCKER_WITH='ro nonet user cwd' rundocker dotenvlinter/dotenv-linter "$@";
+}
+
+hadolint () {
+    RUNDOCKER_WITH='ro nonet user cwd' rundocker hadolint/hadolint hadolint "$@";
+}
+
+dockerfile_lint () {
+    RUNDOCKER_WITH='ro nonet user cwd' rundocker projectatomic/dockerfile-lint dockerfile_lint "$@";
+}
+
+dockerfilelint () {
+    RUNDOCKER_WITH='ro nonet user cwd' rundocker replicated/dockerfilelint "$@";
+}
