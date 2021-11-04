@@ -45,11 +45,11 @@ target home directory, like ``~/pjdelport-dotfiles``.
 
 To install links for all packages::
 
-    stow -v */ -n
+    stow --no-folding -v */ -n
 
 To remove installed links::
 
-    stow -v -D */ -n
+    stow --no-folding -v -D */ -n
 
 Using Bookkeeper
 ----------------
