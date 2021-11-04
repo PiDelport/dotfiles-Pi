@@ -80,6 +80,17 @@ ___install_hub_completion () {
 }
 
 
+# https://github.com/abhinav/restack
+___install_git_restack () (
+    which jq >/dev/null || { echo "Please install jq: sudo apt install jq"; return; }
+    set -exo pipefail
+    # https://github.com/abhinav/restack/releases
+    local release="$(curl -sS https://api.github.com/repos/abhinav/restack/releases/latest | jq -r .tag_name)"
+    local url="https://github.com/abhinav/restack/releases/download/${release}/restack_${release#v}_$(uname -s)_$(uname -m).tar.gz"
+    cd ~/.local/bin
+    curl -L "$url" | tar -xz restack
+)
+
 # GitHub CLI: https://github.com/cli/cli/blob/trunk/docs/install_linux.md
 
 ___install_gh () {
