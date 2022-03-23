@@ -1,2 +1,2 @@
 # Add the XDG-style ~/.local/bin directory to the path by default.
-PATH DEFAULT=${HOME}/.local/bin:${PATH}
+PATH DEFAULT=${HOME}/.local/bin:${HOME}/.cabal/bin:${HOME}/.ghcup/bin:${PATH}
