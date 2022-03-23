@@ -111,3 +111,12 @@ fi
 ___install_makers_completion () {
     curl -LR https://github.com/sagiegurari/cargo-make/raw/master/extra/shell/makers-completion.bash -o ~/.local/share/bash-completion/completions/makers
 }
+
+___install_pipx () {
+    python3 -m pip install --user pipx
+    echo 'may need: sudo apt install python3-venv'
+}
+
+if which pipx >/dev/null; then
+    source <(register-python-argcomplete pipx)
+fi
