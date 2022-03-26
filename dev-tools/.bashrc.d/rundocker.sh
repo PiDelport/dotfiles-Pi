@@ -86,3 +86,9 @@ dockfmt () {
     RUNDOCKER_WITH='nonet user cwd' rundocker jess/dockfmt "$@";
 }
 
+structurizr () {
+    # https://structurizr.com/help/lite
+    echo "structurizr will listen at: http://localhost:8080/"
+    rundocker --volume "$PWD":/usr/local/structurizr --publish '127.0.0.1:8080:8080' structurizr/lite;
+}
+
