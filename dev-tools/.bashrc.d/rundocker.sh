@@ -69,6 +69,11 @@ hadolint () {
     RUNDOCKER_WITH='ro nonet user cwd' rundocker hadolint/hadolint hadolint "$@";
 }
 
+# https://github.com/RedCoolBeans/dockerlint
+dockerlint () {
+    RUNDOCKER_WITH='ro nonet user cwd' rundocker redcoolbeans/dockerlint "$@";
+}
+
 dockerfile_lint () {
     RUNDOCKER_WITH='ro nonet user cwd' rundocker projectatomic/dockerfile-lint dockerfile_lint "$@";
 }
