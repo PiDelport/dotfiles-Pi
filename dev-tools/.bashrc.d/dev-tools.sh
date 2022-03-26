@@ -18,7 +18,7 @@ fi
 
 ___install_docker-compose () (
     which jq >/dev/null || { echo "Please install jq: sudo apt install jq"; return; }
-    set -ex
+    set -exo pipefail
     # https://github.com/docker/compose/releases/latest
     local release="$(curl -sS https://api.github.com/repos/docker/compose/releases/latest | jq -r .tag_name)"
     local kernel="$(uname -s)"
