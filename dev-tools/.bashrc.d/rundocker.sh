@@ -92,3 +92,7 @@ structurizr () {
     rundocker --volume "$PWD":/usr/local/structurizr --publish '127.0.0.1:8080:8080' structurizr/lite;
 }
 
+shellcheck () {
+    # https://github.com/koalaman/shellcheck
+    RUNDOCKER_WITH='ro nonet user cwd' rundocker koalaman/shellcheck "$@"
+}
