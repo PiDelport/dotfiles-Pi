@@ -71,34 +71,34 @@ docker-dive () {
 complete -F _complete_docker_images docker-dive
 
 dotenv-linter () {
-    RUNDOCKER_WITH='ro nonet user cwd' rundocker dotenvlinter/dotenv-linter "$@";
+    RUNDOCKER_WITH='ro nonet user cwd' rundocker dotenvlinter/dotenv-linter "$@"
 }
 
 hadolint () {
-    RUNDOCKER_WITH='ro nonet user cwd' rundocker hadolint/hadolint hadolint "$@";
+    RUNDOCKER_WITH='ro nonet user cwd' rundocker hadolint/hadolint hadolint "$@"
 }
 
 # https://github.com/RedCoolBeans/dockerlint
 dockerlint () {
-    RUNDOCKER_WITH='ro nonet user cwd' rundocker redcoolbeans/dockerlint "$@";
+    RUNDOCKER_WITH='ro nonet user cwd' rundocker redcoolbeans/dockerlint "$@"
 }
 
 dockerfile_lint () {
-    RUNDOCKER_WITH='ro nonet user cwd' rundocker projectatomic/dockerfile-lint dockerfile_lint "$@";
+    RUNDOCKER_WITH='ro nonet user cwd' rundocker projectatomic/dockerfile-lint dockerfile_lint "$@"
 }
 
 dockerfilelint () {
-    RUNDOCKER_WITH='ro nonet user cwd' rundocker replicated/dockerfilelint "$@";
+    RUNDOCKER_WITH='ro nonet user cwd' rundocker replicated/dockerfilelint "$@"
 }
 
 dockfmt () {
-    RUNDOCKER_WITH='nonet user cwd' rundocker jess/dockfmt "$@";
+    RUNDOCKER_WITH='nonet user cwd' rundocker jess/dockfmt "$@"
 }
 
 structurizr () {
     # https://structurizr.com/help/lite
     echo "structurizr will listen at: http://localhost:8080/"
-    rundocker --volume "$PWD":/usr/local/structurizr --publish '127.0.0.1:8080:8080' structurizr/lite;
+    rundocker --volume "$PWD":/usr/local/structurizr --publish '127.0.0.1:8080:8080' structurizr/lite
 }
 
 shellcheck () {
