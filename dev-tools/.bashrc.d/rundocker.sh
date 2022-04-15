@@ -64,6 +64,12 @@ complete -F _complete_docker_images rundocker
 
 # Command definitions:
 
+docker-dive () {
+    # docker-dive build
+    RUNDOCKER_WITH='nonet user cwd dockerd' rundocker --env DOCKER_BUILDKIT wagoodman/dive "$@"
+}
+complete -F _complete_docker_images docker-dive
+
 dotenv-linter () {
     RUNDOCKER_WITH='ro nonet user cwd' rundocker dotenvlinter/dotenv-linter "$@";
 }
