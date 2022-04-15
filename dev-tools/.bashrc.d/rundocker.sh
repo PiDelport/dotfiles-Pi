@@ -36,7 +36,11 @@ rundocker () {
             cwd)
                 docker_args+=(--volume "$PWD":/run/pwd --workdir /run/pwd) ;;
             dockerd)
-                docker_args+=(--volume /var/run/docker.sock:/var/run/docker.sock) ;;
+                docker_args+=(
+                    --volume /var/run/docker.sock:/var/run/docker.sock
+                    # Run as the the "docker" group, for non-root compatibility
+                    --group-add "$(getent group docker | cut --delimiter ':' --field 3)"
+                );;
             *)
                 echo "rundocker: unrecognised RUNDOCKER_WITH value: ${tag@Q}"; return 1;;
         esac
