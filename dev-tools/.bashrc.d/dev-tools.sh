@@ -67,8 +67,7 @@ ___install_gh () {
 }
 
 if which gh >/dev/null; then
-    #eval "$(gh completion -s bash)"
-    source <(gh completion -s bash)
+    source <(gh completion --shell bash)
 fi
 
 # Rust:
