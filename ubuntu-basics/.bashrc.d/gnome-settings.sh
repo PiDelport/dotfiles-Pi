@@ -37,6 +37,10 @@ ___gsettings_set () {
 
     # Meld
     gsettings set org.gnome.meld highlight-syntax 'true'
+    gsettings set org.gnome.meld indent-width '4'
+    gsettings set org.gnome.meld insert-spaces-instead-of-tabs 'true'
+    gsettings set org.gnome.meld style-scheme 'cobalt'
+
 }
 
 
