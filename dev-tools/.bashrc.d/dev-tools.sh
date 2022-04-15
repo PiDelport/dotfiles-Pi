@@ -18,17 +18,31 @@ fi
 
 ___install_docker-compose () (
     which jq >/dev/null || { echo "Please install jq: sudo apt install jq"; return; }
-    set -exo pipefail
+    set -eo pipefail
     # https://github.com/docker/compose/releases/latest
-    local release="$(curl -sS https://api.github.com/repos/docker/compose/releases/latest | jq -r .tag_name)"
-    local kernel="$(uname -s)"
-    local machine="$(uname -m)"
-    local url="https://github.com/docker/compose/releases/download/${release}/docker-compose-${kernel}-${machine}"
+    local release="$(curl --fail --no-progress-meter https://api.github.com/repos/docker/compose/releases/latest | jq --raw-output .tag_name)"
+    local url="https://github.com/docker/compose/releases/download/${release}/docker-compose-$(uname --kernel-name)-$(uname --machine)"
     cd ~/.local/bin
-    curl -LRC- -o docker-compose "$url"
-    chmod +x docker-compose
 
-    curl -L "https://raw.githubusercontent.com/docker/compose/${release}/contrib/completion/bash/docker-compose" -o ~/.bashrc.d/bash-completion-docker-compose.sh
+    # NOTE: Take some extra care to save and compare ETags, because of docker-compose's size.
+    echo "Downloading ${url}"
+    curl --fail --location --remote-time --progress-bar \
+        --etag-compare <(test -f 'docker-compose.etag' && cat 'docker-compose.etag') --etag-save 'docker-compose.etag' \
+        --output 'docker-compose' "${url}"
+    chmod +x 'docker-compose'
+    echo "Installed ~/.local/bin/docker-compose"
+)
+
+___install_docker-compose_completion () (
+    # https://docs.docker.com/compose/completion/
+    set -eo pipefail
+
+    # NOTE: Completion seems to be removed from the repository of docker-compose v2; docs still point to 1.29.2?
+    url='https://github.com/docker/compose/raw/1.29.2/contrib/completion/bash/docker-compose'
+    file=~/.local/share/bash-completion/completions/docker-compose
+    echo "Downloading ${url}"
+    curl --fail --location --remote-time --progress-bar --create-dirs --output "${file}" "${url}"
+    echo "Installed ${file}"
 )
 
 # https://github.com/abhinav/restack
