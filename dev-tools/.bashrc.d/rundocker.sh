@@ -47,7 +47,7 @@ rundocker () {
 
 # rundocker completion: complete Docker image names.
 # Depends on Docker's completion: see /usr/share/bash-completion/completions/docker (or similar)
-_rundocker () {
+_complete_docker_images () {
     # Make sure Docker's completion is loaded, or abort.
     __load_completion docker || return "$?"
     # Set some context, like the _docker completion function does.
@@ -56,8 +56,7 @@ _rundocker () {
     # Jump straight to completing images.
     __docker_complete_images --repo --tag --id
 }
-complete -F _rundocker rundocker
-
+complete -F _complete_docker_images rundocker
 
 # Command definitions:
 
