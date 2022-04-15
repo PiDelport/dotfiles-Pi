@@ -8,6 +8,9 @@
 [core]
 excludesfile = ~/.gitignore.common
 
+[fetch]
+prune = true
+
 [push]
 # Squelch the default warning message about this.
 default = simple
