@@ -74,7 +74,11 @@ fi
 
 # cargo make: https://github.com/sagiegurari/cargo-make#shell-completion
 ___install_makers_completion () {
-    curl -LR https://github.com/sagiegurari/cargo-make/raw/master/extra/shell/makers-completion.bash -o ~/.local/share/bash-completion/completions/makers
+    local url="https://github.com/sagiegurari/cargo-make/raw/master/extra/shell/makers-completion.bash"
+    local file=~/.local/share/bash-completion/completions/makers
+    echo "Downloading ${url}"
+    curl --fail --location --progress-bar --create-dirs --output "${file}" "${url}"
+    echo "Installed ${file}"
 }
 
 ___install_pipx () {
