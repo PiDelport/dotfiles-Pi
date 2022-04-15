@@ -105,3 +105,28 @@ shellcheck () {
     # https://github.com/koalaman/shellcheck
     RUNDOCKER_WITH='ro nonet user cwd' rundocker koalaman/shellcheck "$@"
 }
+
+which fzf >/dev/null || fzf () {
+    # https://github.com/junegunn/fzf
+    # https://github.com/backplane/conex/tree/main/fzf
+
+    # NOTE: To support piped input like "ls | fzf", we can't use Docker's "--tty" option,
+    # but we *can* manually bind-mount the host pseudo-terminal where fzf will look for it.
+    #
+    # To do this, we look up the terminal attached to standard error.
+    # This matches what fzf implements here:
+    #
+    # - openTtyIn(): https://github.com/junegunn/fzf/blob/0.30.0/src/tui/light_unix.go#L50
+    # - ttyname(): https://github.com/junegunn/fzf/blob/0.30.0/src/tui/ttyname_unix.go#L13
+    #
+    # NOTE: We do this only when standard input is *not* a terminal,
+    # to prevent conflicting with rundocker's "--tty".
+
+    local -a tty_volume=()
+    test -t 0 || tty_volume+=(--volume "$(readlink '/proc/self/fd/2')":/dev/tty)
+
+    RUNDOCKER_WITH='ro nonet user cwd' rundocker "${tty_volume[@]}" \
+        --env FZF_DEFAULT_COMMAND \
+        --env FZF_DEFAULT_OPTS \
+         backplane/fzf "$@"
+}
