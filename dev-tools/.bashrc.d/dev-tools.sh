@@ -31,13 +31,6 @@ ___install_docker-compose () (
     curl -L "https://raw.githubusercontent.com/docker/compose/${release}/contrib/completion/bash/docker-compose" -o ~/.bashrc.d/bash-completion-docker-compose.sh
 )
 
-# https://hub.docker.com/
-
-___install_hub_completion () {
-    curl -LRC- https://raw.githubusercontent.com/github/hub/master/etc/hub.bash_completion.sh -o ~/.bashrc.d/hub.bash_completion.sh
-}
-
-
 # https://github.com/abhinav/restack
 ___install_git_restack () (
     which jq >/dev/null || { echo "Please install jq: sudo apt install jq"; return; }
