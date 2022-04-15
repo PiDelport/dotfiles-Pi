@@ -48,12 +48,14 @@ ___install_docker-compose_completion () (
 # https://github.com/abhinav/restack
 ___install_git_restack () (
     which jq >/dev/null || { echo "Please install jq: sudo apt install jq"; return; }
-    set -exo pipefail
+    set -eo pipefail
     # https://github.com/abhinav/restack/releases
-    local release="$(curl -sS https://api.github.com/repos/abhinav/restack/releases/latest | jq -r .tag_name)"
-    local url="https://github.com/abhinav/restack/releases/download/${release}/restack_${release#v}_$(uname -s)_$(uname -m).tar.gz"
+    local release="$(curl --fail --no-progress-meter https://api.github.com/repos/abhinav/restack/releases/latest | jq --raw-output .tag_name)"
+    local url="https://github.com/abhinav/restack/releases/download/${release}/restack_${release#v}_$(uname --kernel-name)_$(uname --machine).tar.gz"
     cd ~/.local/bin
-    curl -L "$url" | tar -xz restack
+    echo "Downloading ${url}"
+    curl --fail --location --progress-bar "$url" | tar --extract --gzip restack
+    echo "Installed ~/.local/bin/restack"
 )
 
 # GitHub CLI: https://github.com/cli/cli/blob/trunk/docs/install_linux.md
@@ -62,7 +64,6 @@ ___install_gh () {
     sudo -n apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
     sudo -n apt-add-repository https://cli.github.com/packages
     sudo -n apt install -y gh
-
 }
 
 if which gh >/dev/null; then
