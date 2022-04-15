@@ -20,7 +20,7 @@ ui = true
 
 # Convenience aliases.
 [alias]
-c = checkout
+c = cola
 d = diff HEAD
 f = fetch
 fa = fetch --all
