@@ -89,3 +89,13 @@ ___install_pipx () {
 if which pipx >/dev/null; then
     source <(register-python-argcomplete pipx)
 fi
+
+___install_aws () (
+    sudo -v
+    # https://github.com/aws/aws-cli/tree/v2#installation
+    cd ~/Downloads
+    curl -LR https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
+    unzip awscli-exe-linux-x86_64.zip
+    sudo aws/install
+    echo 'complete -C aws_completer aws' | sudo tee /usr/local/share/bash-completion/completions/aws
+)
