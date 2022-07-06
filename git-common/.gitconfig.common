@@ -48,6 +48,7 @@ in = fetch --dry-run
 out = push --all --dry-run
 ff = pull --ff-only
 pushup = push --force-with-lease
+hard = reset --hard
 
 l = log --graph --oneline -n 10
 ls = l --stat
