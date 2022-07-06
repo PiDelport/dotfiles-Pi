@@ -130,3 +130,8 @@ which fzf >/dev/null || fzf () {
         --env FZF_DEFAULT_OPTS \
          backplane/fzf "$@"
 }
+
+markdown-link-check () {
+    # https://github.com/tcort/markdown-link-check
+    RUNDOCKER_WITH='ro user cwd' rundocker ghcr.io/tcort/markdown-link-check:stable "$@"
+}
