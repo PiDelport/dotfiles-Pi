@@ -14,17 +14,16 @@ ___bd_prochot () (
     set -euo pipefail
     sudo -v
     local msr="0x$(sudo rdmsr 0x1FC)"
+    local msr_bd_prochot_flag="$(( "${msr}" & 0x1 ))"
     local msr_bd_prochot_disabled="$(printf '0x%x\n' "$(( "${msr}" & 0xFFFFFFFE ))")"
     local msr_bd_prochot_enabled="$(printf '0x%x\n' "$(( "${msr}" | 0x1 ))")"
-    echo "Current MSR: ${msr}"
+    echo "Current MSR: ${msr} (BD PROCHOT ${msr_bd_prochot_flag})"
     echo
     echo "To disable BD PROCHOT:"
-    echo
-    echo "sudo wrmsr ${msr_bd_prochot_disabled}"
+    echo "sudo wrmsr 0x1FC ${msr_bd_prochot_disabled}"
     echo
     echo "To enable BD PROCHOT:"
-    echo
-    echo "sudo wrmsr ${msr_bd_prochot_enabled}"
+    echo "sudo wrmsr 0x1FC ${msr_bd_prochot_enabled}"
     echo
 )
 
