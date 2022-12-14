@@ -99,3 +99,13 @@ ___install_aws () (
     sudo aws/install
     echo 'complete -C aws_completer aws' | sudo tee /usr/local/share/bash-completion/completions/aws
 )
+
+# Elm:
+
+# https://github.com/elm/compiler/blob/master/installers/linux/README.md
+___install_elm () (
+    cd ~/.local/bin
+    curl -L -o elm.gz 'https://github.com/elm/compiler/releases/download/0.19.1/binary-for-linux-64-bit.gz'
+    gunzip elm.gz
+    chmod +x elm
+)
