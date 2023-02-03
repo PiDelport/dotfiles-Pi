@@ -16,6 +16,9 @@ ___gsettings_set () {
     # Sensible workspace-scoped Alt-Tab
     gsettings set org.gnome.shell.app-switcher current-workspace-only 'true'
 
+    # Don't limit workspaces to primary monitor.
+    gsettings set org.gnome.mutter workspaces-only-on-primary 'false'
+
     # Natural scrolling for mouse
     gsettings set org.gnome.desktop.peripherals.mouse natural-scroll 'true'
 
