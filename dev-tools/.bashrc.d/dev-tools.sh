@@ -110,3 +110,13 @@ ___install_elm () (
     gunzip elm.gz
     chmod +x elm
 )
+
+# https://github.com/VirtusLab/git-machete#readme
+___install_git_machete () (
+    set -eo pipefail
+
+    which git-machete >/dev/null || sudo snap install --classic git-machete
+
+    # https://github.com/VirtusLab/git-machete/blob/master/completion/README.md
+    curl -L https://raw.githubusercontent.com/VirtusLab/git-machete/master/completion/git-machete.completion.bash -o ~/.bashrc.d/git-machete-completion.sh
+)
