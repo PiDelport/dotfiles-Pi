@@ -13,6 +13,9 @@ ___gsettings_set () {
     # Add Dvorak keyboard layout
     gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us+dvorak'), ('xkb', 'us')]"
 
+    # Disable 'Super_L' as launcher key
+    gsettings set org.gnome.mutter overlay-key ''
+
     # Sensible workspace-scoped Alt-Tab
     gsettings set org.gnome.shell.app-switcher current-workspace-only 'true'
 
